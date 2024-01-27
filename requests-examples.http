@@ -1,0 +1,106 @@
+# API request examples
+
+@baseUrl = http://localhost:8000/api/v1
+
+# Create a product
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Tomato",
+  "description": "Best tomatoes on the market"
+}
+
+###
+
+# Get products
+GET {{baseUrl}}/products/?limit=2
+Content-Type: application/json
+
+###
+
+# Update a product
+PATCH {{baseUrl}}/products/3/
+Content-Type: application/json
+
+{
+  "description": "Juiciest and most aromatic cherry tomatoes"
+}
+
+###
+
+# Delete a product
+DELETE {{baseUrl}}/products/3/
+Content-Type: application/json
+
+###
+
+# Search for products by title and description
+GET {{baseUrl}}/products/?search=Tomato
+Content-Type: application/json
+
+###
+
+# Create a stock
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "3 Budarina Street",
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 4,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+###
+
+# Update records in a stock
+PATCH {{baseUrl}}/stocks/7/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 343,
+      "price": 130.80
+    },
+    {
+      "product": 4,
+      "quantity": 464,
+      "price": 145
+    },
+    {
+      "product": 6,
+      "quantity": 4,
+      "price": 14
+    }
+  ]
+}
+
+###
+
+# Search for stocks with a specific product
+GET {{baseUrl}}/stocks/?products=4
+Content-Type: application/json
+
+###
+
+# Search for stocks
+GET {{baseUrl}}/stocks
+Content-Type: application/json
+
+###
+
+# Search for stocks with a specific product
+GET {{baseUrl}}/stocks/?search=tomato
+Content-Type: application/json
